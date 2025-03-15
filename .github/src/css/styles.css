@@ -1,0 +1,177 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #c0c0c0;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    color: black;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #000000;
+}
+
+h1 {
+    color: #000000;
+    margin: 0;
+}
+
+#search-bar, #filter-bar, #sort-bar, #pagination-bar {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#search-bar input {
+    padding: 10px;
+    width: 300px;
+    border: 2px solid #3b4cca;
+    border-radius: 5px;
+}
+
+#search-bar button, #filter-bar button, #sort-bar button, #pagination-bar button {
+    background-color: #3b4cca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#search-bar button:hover, #filter-bar button:hover, #sort-bar button:hover, #pagination-bar button:hover {
+    background-color: #2a2a72;
+}
+
+/* Specific styles for filter buttons */
+#filter-bar #all {
+    background-color: #3b4cca;
+}
+
+#filter-bar #grass {
+    background-color: #78c850;
+}
+
+#filter-bar #fire {
+    background-color: #f08030;
+}
+
+#filter-bar #water {
+    background-color: #6890f0;
+}
+
+#filter-bar #electric {
+    background-color: #f8d030;
+}
+
+#filter-bar #ice {
+    background-color: #98d8d8;
+}
+
+#filter-bar #fighting {
+    background-color: #c03028;
+}
+
+#filter-bar #poison {
+    background-color: #a040a0;
+}
+
+#filter-bar #ground {
+    background-color: #e0c068;
+}
+
+#filter-bar #flying {
+    background-color: #a890f0;
+}
+
+#filter-bar #psychic {
+    background-color: #f85888;
+}
+
+#filter-bar #bug {
+    background-color: #a8b820;
+}
+
+#filter-bar #rock {
+    background-color: #b8a038;
+}
+
+#filter-bar #ghost {
+    background-color: #705898;
+}
+
+#filter-bar #dragon {
+    background-color: #7038f8;
+}
+
+#filter-bar #dark {
+    background-color: #705848;
+}
+
+#filter-bar #steel {
+    background-color: #b8b8d0;
+}
+
+#filter-bar #fairy {
+    background-color: #ee99ac;
+}
+
+#pokemon-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pokemon-card {
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-card img {
+    width: 120px;
+    height: 120px;
+}
+
+.pokemon-card h2 {
+    color: #000000;
+    margin: 10px 0;
+}
+
+.pokemon-card h3 {
+    color: #2a2a72;
+    margin: 5px 0;
+}
+
+.pokemon-card .pokemon-details {
+    display: none;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.pokemon-card .pokemon-details p {
+    margin: 5px 0;
+}
+
+.pokemon-card button {
+    background-color: #3b4cca;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pokemon-card button:hover {
+    background-color: #2a2a72;
+}
+
+#loading {
+    text-align: center;
+    margin-top: 20px;
+}
