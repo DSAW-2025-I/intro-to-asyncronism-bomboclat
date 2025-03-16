@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pokemonList = document.getElementById('pokemon-list');
     const loadingSection = document.getElementById('loading');
-    const pokeCount = 1030; // Number of Pokémon to fetch
+    const pokeCount = 1025; // Number of Pokémon to fetch
 
     const fetchPokemons = async () => {
         for (let i = 1; i <= pokeCount; i++) {
