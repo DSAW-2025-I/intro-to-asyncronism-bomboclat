@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pokemonList = document.getElementById('pokemon-list');
     const loadingSection = document.getElementById('loading');
-    const pokeCount = 1030; // Number of Pokémon to fetch
+    const pokeCount = 1030; 
 
     const fetchPokemons = async () => {
         for (let i = 1; i <= pokeCount; i++) {
@@ -61,3 +61,20 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error fetching Pokémon data:', error);
     });
 });
+
+
+document.addEventListener("keyup" , e=>{
+   
+    if (e.target.matches("#Searcher")){
+      if(e.key ==="Escape")e.target.value = ""
+    
+    document.querySelectorAll(pokemon).forEach(PokemonBuscado =>{
+        PokemonBuscado.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+        ?PokemonBuscado.classList.remove("filtro")
+        :PokemonBuscado.classList.add("filtro")
+
+    })
+   }
+    consolo.log(e.target.value)
+     
+})
