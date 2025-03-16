@@ -2,18 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const pokemonList = document.getElementById('pokemon-list');
     const loadingSection = document.getElementById('loading');
     const pokeCount = 1030; 
+    const filterButtons = document.querySelectorAll('.pokemon-type-btn'); 
 
     const fetchPokemons = async () => {
-        for (let i = 1; i <= pokeCount; i++) {
-            await getPokemon(i);
-        }
-    };
-
-    const getPokemon = async (id) => {
-        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const url = `https://pokeapi.co/api/v2/pokemon?limit=${pokeCount}`;
         const res = await fetch(url);
-        const pokemon = await res.json();
-        await getPokemonSpecies(pokemon);
+        const data = await res.json();
+
+        for (const pokemon of data.results) {
+            const resPokemon = await fetch(pokemon.url);
+            const pokemonData = await resPokemon.json();
+
+        
+            if (!pokemonData.name.includes('-')) {
+                await getPokemonSpecies(pokemonData);
+            }
+        }
     };
 
     const getPokemonSpecies = async (pokemon) => {
@@ -26,9 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const createPokemonCard = (pokemon, species) => {
         const card = document.createElement('section');
         card.classList.add('pokemon-card');
-        
         const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
         const id = pokemon.id.toString().padStart(3, '0');
+        const types = pokemon.types.map(typeInfo => typeInfo.type.name);
+        const typesString = types.join(' / ');
+
+        card.setAttribute('data-types', types.join(' ')); 
 
         card.innerHTML = `
             <img src="${pokemon.sprites.other['official-artwork'].front_default}" alt="${name}">
@@ -36,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 class="pokemon-id">#${id}</h3>
             <button class="toggle-details">Toggle Details</button>
             <div class="pokemon-details" style="display: none;">
-                <p>Type: ${pokemon.types.map(typeInfo => typeInfo.type.name).join('/')}</p>
+                <p>Type: ${typesString}</p>
                 <p>Height: ${pokemon.height / 10}m</p>
                 <p>Weight: ${pokemon.weight / 10}kg</p>
                 <p>Base Experience: ${pokemon.base_experience}</p>
@@ -55,26 +62,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    //filtro arreglado
+    const filterPokemon = (type) => {
+        const allPokemonCards = document.querySelectorAll('.pokemon-card');
+
+        allPokemonCards.forEach(card => {
+            const pokemonTypes = card.getAttribute('data-types').split(' ');
+
+          
+            if (type === 'all' || pokemonTypes.some(t => t.toLowerCase() === type.toLowerCase())) {
+                card.style.display = 'block'; 
+            } else {
+                card.style.display = 'none'; 
+            }
+        });
+    };
+
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const type = event.target.id; 
+            filterPokemon(type);
+        });
+    });
+
     fetchPokemons().then(() => {
         loadingSection.style.display = 'none';
     }).catch(error => {
         console.error('Error fetching Pokémon data:', error);
     });
 });
-
-
-document.addEventListener("keyup" , e=>{
-   
-    if (e.target.matches("#Searcher")){
-      if(e.key ==="Escape")e.target.value = ""
-    
-    document.querySelectorAll(pokemon).forEach(PokemonBuscado =>{
-        PokemonBuscado.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-        ?PokemonBuscado.classList.remove("filtro")
-        :PokemonBuscado.classList.add("filtro")
-
-    })
-   }
-    consolo.log(e.target.value)
-     
-})
