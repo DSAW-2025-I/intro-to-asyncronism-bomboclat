@@ -7,57 +7,83 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Pokedex</h1>
+    <header id="pokedex-header">
+        <img src="assets/pokemon.png" alt="Pokédex Logo" id="pokedex-logo">
     </header>
+ <div id="main-container">
     <main>
+     
         <section id="search-bar">
-            <input type="text" placeholder="Search for a Pokémon">
-            <button>Search</button>
+            <input type="text" id="Searcher" placeholder="Search for a Pokémon">
+            <button id="Search-button" aria-label="Search for Pokémon">Search</button>
         </section>
-
+        
         <nav id="filter-bar">
-            <button id="all">All</button>
-            <button id="grass">Grass</button>
-            <button id="fire">Fire</button>
-            <button id="water">Water</button>
-            <button id="electric">Electric</button>
-            <button id="ice">Ice</button>
-            <button id="fighting">Fighting</button>
-            <button id="poison">Poison</button>
-            <button id="ground">Ground</button>
-            <button id="flying">Flying</button>
-            <button id="psychic">Psychic</button>
-            <button id="bug">Bug</button>
-            <button id="rock">Rock</button>
-            <button id="ghost">Ghost</button>
-            <button id="dragon">Dragon</button>
-            <button id="dark">Dark</button>
-            <button id="steel">Steel</button>
-            <button id="fairy">Fairy</button>
+            <button id="all" class="pokemon-type-btn">All</button>
+            <button id="grass" class="pokemon-type-btn">Grass</button>
+            <button id="fire" class="pokemon-type-btn">Fire</button>
+            <button id="water" class="pokemon-type-btn">Water</button>
+            <button id="electric" class="pokemon-type-btn">Electric</button>
+            <button id="ice" class="pokemon-type-btn">Ice</button>
+            <button id="fighting" class="pokemon-type-btn">Fighting</button>
+            <button id="poison" class="pokemon-type-btn">Poison</button>
+            <button id="ground" class="pokemon-type-btn">Ground</button>
+            <button id="flying" class="pokemon-type-btn">Flying</button>
+            <button id="psychic" class="pokemon-type-btn">Psychic</button>
+            <button id="bug" class="pokemon-type-btn">Bug</button>
+            <button id="rock" class="pokemon-type-btn">Rock</button>
+            <button id="ghost" class="pokemon-type-btn">Ghost</button>
+            <button id="dragon" class="pokemon-type-btn">Dragon</button>
+            <button id="dark" class="pokemon-type-btn">Dark</button>
+            <button id="steel" class="pokemon-type-btn">Steel</button>
+            <button id="fairy" class="pokemon-type-btn">Fairy</button>
+            
+        
         </nav>
 
-        <section id="sort-bar">
-            <button>Sort A-Z</button>
-            <button>Sort Z-A</button>
+       
+
+        <section id="pokemon-list">           
+        </section>
+    
+            <!-- Modal Principal -->
+<div id="pokemon-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+        <button class="close" aria-label="Cerrar">&times;</button>
+
+        <!-- 📌 Sección Izquierda: Información General -->
+        <section class="modal-left">
+            <header>
+                <p class="pokemon-number" id="pokemon-number"></p>
+            </header>
+
+            <figure>
+                <img id="pokemon-image" src="" alt="Imagen de Pokémon" class="pokemon-image">
+            </figure>
+
+            <div class="pokemon-types" id="pokemon-types"></div>
+
+            <div class="pokemon-info">
+                <div id="pokemon-height"></div>
+                <div id="pokemon-weight"></div>
+            </div>
+
+            <article>
+                <p class="pokemon-description" id="pokemon-description"></p>
+            </article>
         </section>
 
-        <section id="pagination-bar">
-            <button>Previous</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>Next</button>
+        <!-- 📌 Sección Derecha: Estadísticas -->
+        <section class="modal-right">
+            <h3>Stats</h3>
+            <div class="stats-chart" id="stats-chart"></div>
         </section>
-
-        <section id="loading">
-            <img src="images/loading.gif" alt="Loading">
-        </section>
-
-        <section id="pokemon-list">
-             
-        </section>
+    </div>
+</div>
+<section id="pokemon-list"></section>
+<p id="no-results-message" style="display: none;">No Pokémon found.</p>
     </main>
+ </div>
     <script src="js/script.js"></script>
 </body>
 </html>
