@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.pokemon-type-btn');
     const searchInput = document.getElementById('Searcher');
     const searchButton = document.getElementById('Search-button');
+    
 
     // Debounce function to limit the rate of search execution
     const debounce = (func, delay) => {
