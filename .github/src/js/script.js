@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll('.pokemon-type-btn');
     const searchInput = document.getElementById('Searcher');
     const searchButton = document.getElementById('Search-button');
-    
+    modal.style.display = 'none'; // Ocultar modal al iniciar, solo se muestra cuando se abre >:D
 
     // Debounce function to limit the rate of search execution
     const debounce = (func, delay) => {
