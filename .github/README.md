@@ -1,4 +1,4 @@
- Pokedex: 
+ Pokedex:  https://dsaw-2025-i.github.io/intro-to-asyncronism-bomboclat/
 
 (Victor Luna, Juan jose Campos)
 
@@ -12,6 +12,7 @@ Contiene:
 
 Búsqueda interactiva de Pokémon.  Diseño responsivo adaptable a diferentes dispositivos. Integración con API para obtener datos en tiempo real. Animaciones y efectos visuales atractivos.
 
+![image](https://github.com/user-attachments/assets/0aea74a5-02cd-4a89-be59-1bcd10e64c61)
 
 
 
