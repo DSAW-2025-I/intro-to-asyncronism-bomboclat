@@ -1,3 +1,25 @@
+ Pokedex: 
+
+(Victor Luna, Juan jose Campos)
+
+Este proyecto es una Pokédex interactiva desarrollada con HTML, CSS y JavaScript. Permite a los usuarios buscar y visualizar información sobre diferentes Pokémon de manera atractiva y funcional.
+
+Tecnologías Utilizadas
+
+HTML, CSS, JavaScript
+
+Contiene: 
+
+Búsqueda interactiva de Pokémon.  Diseño responsivo adaptable a diferentes dispositivos. Integración con API para obtener datos en tiempo real. Animaciones y efectos visuales atractivos.
+
+
+
+
+
+
+
+
+
 # Pokedex Project
 
 ## Overview
