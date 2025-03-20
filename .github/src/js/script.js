@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('pokemon-number').textContent = `#${data.id}`;
         document.getElementById('pokemon-image').src = data.sprites.other['official-artwork'].front_default;
         document.getElementById('pokemon-image').alt = data.name;
-
+    
         // Tipos
         const typesContainer = document.getElementById('pokemon-types');
         typesContainer.innerHTML = '';
@@ -100,11 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
             typeSpan.textContent = typeInfo.type.name.toUpperCase();
             typesContainer.appendChild(typeSpan);
         });
-
+    
         // Altura y peso
         document.getElementById('pokemon-height').textContent = `Height: ${data.height / 10} m`;
         document.getElementById('pokemon-weight').textContent = `Weight: ${data.weight / 10} kg`;
-
+    
         // Descripción en inglés
         const flavorTextEntry = speciesData.flavor_text_entries.find(
             entry => entry.language.name === 'en'
@@ -112,29 +112,40 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('pokemon-description').textContent = flavorTextEntry
             ? flavorTextEntry.flavor_text
             : 'No description available.';
-
-        // Estadísticas
+    
+        // Estadísticas (barras de progreso)
         const statsChart = document.getElementById('stats-chart');
-        statsChart.innerHTML = '';
+        statsChart.innerHTML = ''; // Limpiar estadísticas anteriores
+    
         data.stats.forEach(stat => {
             const statName = formatStatName(stat.stat.name);
             const statValue = stat.base_stat;
-
+    
+            // Crear la barra de progreso
             const statDiv = document.createElement('div');
             statDiv.classList.add('stat');
-
+    
             statDiv.innerHTML = `
                 <span class="stat-name">${statName}</span>
-                <div class="stat-bar">
-                    <div class="stat-fill" style="width: ${statValue}%;"></div>
+                <div class="w-full bg-gray-200 rounded-full h-6">
+                    <div class="progress-bar bg-blue-500 h-6 rounded-full text-center text-white font-bold transition-all ease-in-out duration-1000" style="width: 0%;">
+                        ${statValue}%
+                    </div>
                 </div>
             `;
-
+    
             statsChart.appendChild(statDiv);
+    
+            // Animar la barra de progreso
+            setTimeout(() => {
+                const progressBar = statDiv.querySelector('.progress-bar');
+                progressBar.style.width = `${statValue}%`; // Cambiar el ancho de la barra
+                progressBar.textContent = `${statValue}%`; // Actualizar el texto
+            }, 100); // Retraso para que la animación sea visible
         });
     };
 
-    // Formatear nombres de estadísticas en inglés
+    // Formatear nombres de estadísticas 
     const formatStatName = (stat) => {
         const statNames = {
             hp: 'HP',
@@ -187,46 +198,117 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Búsqueda por nombre o número
-    searchInput.addEventListener('input', debounce(() => {
-        const searchTerm = searchInput.value.toLowerCase();
-        filterPokemonByNameOrId(searchTerm);
-    }, 300));
+    // Búsqueda por nombre o número
+searchInput.addEventListener('input', debounce(() => {
+    const searchTerm = searchInput.value.trim().toLowerCase(); // Eliminar espacios y convertir a minúsculas
+    filterPokemonByNameOrId(searchTerm);
+}, 300));
 
-    searchButton.addEventListener('click', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        filterPokemonByNameOrId(searchTerm);
+searchButton.addEventListener('click', () => {
+    const searchTerm = searchInput.value.trim().toLowerCase(); // Eliminar espacios y convertir a minúsculas
+    filterPokemonByNameOrId(searchTerm);
+});
+
+const filterPokemonByNameOrId = (searchTerm) => {
+    const allPokemonCards = document.querySelectorAll('.pokemon-card');
+    let found = false;
+
+    allPokemonCards.forEach(card => {
+        const pokemonName = card.querySelector('h2').textContent.toLowerCase();
+        const pokemonId = card.getAttribute('data-id'); // Obtener el ID del Pokémon
+
+        // Buscar por nombre o ID
+        if (pokemonName.includes(searchTerm) || pokemonId === searchTerm) {
+            card.style.display = 'block'; // Mostrar la tarjeta
+            found = true;
+        } else {
+            card.style.display = 'none'; // Ocultar la tarjeta
+        }
     });
 
     const filterPokemonByNameOrId = (searchTerm) => {
         const allPokemonCards = document.querySelectorAll('.pokemon-card');
         let found = false;
-
+    
         allPokemonCards.forEach(card => {
             const pokemonName = card.querySelector('h2').textContent.toLowerCase();
-            const pokemonId = card.getAttribute('data-id');
-
+            const pokemonId = card.getAttribute('data-id'); // Obtener el ID del Pokémon
+    
+            // Buscar por nombre o ID
             if (pokemonName.includes(searchTerm) || pokemonId === searchTerm) {
-                card.style.display = 'block';
+                card.style.display = 'block'; // Mostrar la tarjeta
                 found = true;
             } else {
-                card.style.display = 'none';
+                card.style.display = 'none'; // Ocultar la tarjeta
             }
         });
-
-        // Mostrar mensaje si no se encuentra ningún Pokémon
+    
+        // Mostrar mensaje e imagen si no se encuentra ningún Pokémon
         const noResultsMessage = document.getElementById('no-results-message');
+        const noResultsImage = document.getElementById('no-results-image');
+    
         if (!found) {
             if (!noResultsMessage) {
                 const message = document.createElement('p');
                 message.id = 'no-results-message';
                 message.textContent = 'No Pokémon found.';
                 pokemonList.appendChild(message);
+            } else {
+                noResultsMessage.style.display = 'block'; // Mostrar el mensaje si ya existe
             }
-        } else if (noResultsMessage) {
-            noResultsMessage.remove();
+    
+            if (noResultsImage) {
+                noResultsImage.style.display = 'block'; // Mostrar la imagen
+            }
+        } else {
+            if (noResultsMessage) {
+                noResultsMessage.style.display = 'none'; // Ocultar el mensaje si hay resultados
+            }
+            if (noResultsImage) {
+                noResultsImage.style.display = 'none'; // Ocultar la imagen si hay resultados
+            }
         }
     };
+};
 
     // Cargar Pokémon
     fetchPokemons();
 });
+const populateModal = (data, speciesData) => {
+    // Limpiar estadísticas anteriores
+    const statsChart = document.getElementById('stats-chart');
+    statsChart.innerHTML = '';
+
+    data.stats.forEach(stat => {
+        const statName = formatStatName(stat.stat.name);
+        const statValue = stat.base_stat;
+
+        // Crear la barra de progreso
+        const statDiv = document.createElement('div');
+        statDiv.classList.add('stat');
+
+        statDiv.innerHTML = `
+            <span class="stat-name">${statName}</span>
+            <div class="stat-bar">
+                <div class="stat-fill ${stat.stat.name}" style="width: ${statValue}%;"></div>
+            </div>
+        `;
+
+        statsChart.appendChild(statDiv);
+    });
+
+    // Actualizar información en modal-left
+    document.getElementById('pokemon-number').textContent = `#${data.id}`;
+    document.getElementById('pokemon-image').src = data.sprites.other['official-artwork'].front_default;
+    document.getElementById('pokemon-image').alt = data.name;
+
+    // Tipos
+    const typesContainer = document.getElementById('pokemon-types');
+    typesContainer.innerHTML = '';
+    data.types.forEach(typeInfo => {
+        const typeSpan = document.createElement('span');
+        typeSpan.classList.add('pokemon-type', typeInfo.type.name);
+        typeSpan.textContent = typeInfo.type.name.toUpperCase();
+        typesContainer.appendChild(typeSpan);
+    });
+};
