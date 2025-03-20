@@ -207,25 +207,25 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+    background-color: rgba(0, 0, 0, 0.8); 
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    overflow-y: auto; /* Permite desplazamiento si el contenido es muy grande */
+    overflow-y: auto; 
 }
 
 .modal-content {
-    background: #f8f8f8; /* Fondo claro */
+    background: #f8f8f8; 
     padding: 20px;
     border-radius: 15px;
     width: 90%;
-    max-width: 700px; /* Ancho máximo */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+    max-width: 700px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
     position: relative;
     display: flex;
     gap: 20px;
-    animation: fadeIn 0.3s ease-in-out; /* Animación de entrada */
+    animation: fadeIn 0.3s ease-in-out; 
 }
 
 @keyframes fadeIn {
@@ -246,12 +246,12 @@ h1 {
     font-size: 24px;
     cursor: pointer;
     color: #333;
-    background: none; /* Sin fondo */
-    border: none; /* Sin borde */
+    background: none; 
+    border: none; 
 }
 
 .close:hover {
-    color: #e63946; /* Rojo para indicar acción */
+    color: #e63946; 
 }
 
 .modal-left {
@@ -326,7 +326,7 @@ h1 {
     padding: 10px;
     border-radius: 8px;
     gap: 10px;
-    space-between: center;
+    
 }
 
 .stat {
@@ -409,12 +409,12 @@ h1 {
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Agregar transición */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
 }
 
 .pokemon-card:hover {
-    transform: scale(1.05); /* Escalar la tarjeta */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumentar la sombra */
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -428,21 +428,21 @@ h1 {
     text-transform: uppercase;
     transition: all 0.2s ease-in-out;
     position: relative;
-    overflow: hidden; /* Para el efecto de brillo */
-    box-shadow: none; /* Eliminamos la sombra inicial */
+    overflow: hidden; 
+    box-shadow: none; 
 }
 
 #filter-bar button:hover {
-    transform: translateY(-3px); /* Elevación */
-    box-shadow: 4px 4px 0px rgba(99, 95, 95, 0.8); /* Sombra al hover */
+    transform: translateY(-3px); 
+    box-shadow: 4px 4px 0px rgba(99, 95, 95, 0.8); 
 }
 
 #filter-bar button:active {
-    transform: translateY(1px); /* Efecto de presionado */
-    box-shadow: 2px 2px 0px rgba(99, 95, 95, 0.8); /* Sombra al presionar */
+    transform: translateY(1px); 
+    box-shadow: 2px 2px 0px rgba(99, 95, 95, 0.8);
 }
 
-/* Efecto de brillo al hover */
+
 #filter-bar button::after {
     content: '';
     position: absolute;
@@ -462,10 +462,10 @@ h1 {
     left: -50%;
 }
 
-/* Asegurar que el texto sea legible al hacer hover */
+
 #filter-bar button:hover {
-    color: white; /* Mantener el color del texto en blanco */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto para mejor legibilidad */
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
 }
 
 /* Cambio de color de texto al hover para algunos tipos */
@@ -513,7 +513,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro */
+    background-color: rgba(0, 0, 0, 0.8); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -522,16 +522,16 @@ h1 {
 }
 
 .modal-content {
-    background: #f8f8f8; /* Fondo claro */
+    background: #f8f8f8; 
     padding: 20px;
     border-radius: 15px;
     width: 90%;
-    max-width: 700px; /* Ancho máximo */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para destacar */
+    max-width: 700px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
     position: relative;
     display: flex;
     gap: 20px;
-    animation: fadeIn 0.3s ease-in-out; /* Animación de entrada */
+    animation: fadeIn 0.3s ease-in-out; 
 }
 
 @keyframes fadeIn {
@@ -552,15 +552,15 @@ h1 {
     font-size: 24px;
     cursor: pointer;
     color: #333;
-    background: none; /* Sin fondo */
-    border: none; /* Sin borde */
+    background: none; 
+    border: none; 
 }
 
 .close:hover {
-    color: #e63946; /* Rojo para indicar acción */
+    color: #e63946; 
 }
 
-/* Responsive design for modal */
+
 @media (max-width: 768px) {
     .modal-content {
         flex-direction: column;
@@ -570,16 +570,6 @@ h1 {
     .modal-left, .modal-right {
         width: 100%;
     }
-}
-
-/* Animación para las barras de progreso */
-@keyframes progress {
-    from { width: 0%; }
-    to { width: var(--progress-width); }
-}
-
-.progress-bar {
-    animation: progress 5s ease-in-out forwards;
 }
 
 #no-results {
@@ -616,49 +606,48 @@ h1 {
 }
 
 .button {
-    background-color: #3b82f6; /* bg-blue-500 */
-    color: white; /* text-white */
-    padding: 8px 16px; /* px-4 py-2 */
-    border-radius: 0.5rem; /* rounded */
-    transition: background-color 0.3s ease; /* hover transition */
+    background-color: #3b82f6;
+    color: white; 
+    padding: 8px 16px; 
+    border-radius: 0.5rem; 
+    transition: background-color 0.3s ease; 
 }
 
 .button:hover {
-    background-color: #1d4ed8; /* bg-blue-700 */
+    background-color: #1d4ed8; 
 
 
 }
 
 .center-container {
-    display: flex; /* flex */
-    justify-content: center; /* justify-center */
-    align-items: center; /* items-center */
-    height: 100vh; /* h-screen */
-}
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; }
 
 .modal-left {
     width: 45%;
     text-align: center;
-    background: linear-gradient(135deg, #3b4cca, #78c850); /* Fondo degradado */
+    background: linear-gradient(135deg, #3b4cca, #78c850); 
     padding: 20px;
     border-radius: 15px;
-    color: white; /* Texto blanco para contraste */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
 .pokemon-number {
     font-size: 22px;
     font-weight: bold;
-    color: #ffcc00; /* Amarillo para destacar */
+    color: #ffcc00; 
 }
 
 .pokemon-image {
     width: 140px;
     height: auto;
     margin: 10px 0;
-    border: 3px solid #ffffff; /* Borde blanco */
-    border-radius: 50%; /* Imagen redonda */
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    border: 3px solid #ffffff; 
+    border-radius: 50%; 
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .pokemon-types {
@@ -672,7 +661,7 @@ h1 {
     padding: 6px 12px;
     border-radius: 15px;
     font-weight: bold;
-    color: white;
+    color: white;                               /** LA MALA PARA CSS AJSHDJA, parce que es esta cantidad de capas. Nota mental aprender  organizar capaz padre e hijo en css**/
     text-transform: uppercase;
     font-size: 12px;
 }
@@ -680,10 +669,10 @@ h1 {
 .modal-right {
     width: 55%;
     text-align: left;
-    background: #c3ff76; /* Fondo claro */
+    background: #c3ff76; 
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
     font-family: 'Arial', sans-serif;
 }
 
@@ -691,7 +680,7 @@ h1 {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #3b4cca; /* Azul para destacar */
+    color: #3b4cca; 
 }
 
 .stats-chart {
@@ -699,11 +688,11 @@ h1 {
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
-    background: rgba(255, 255, 255, 0.689); /* Fondo semitransparente */
+    background: rgba(255, 255, 255, 0.689);
     padding: 10px;
     border-radius: 8px;
-    height: 200px; /* Altura fija */
-    overflow-y: auto; /* Scroll si el contenido es muy largo */
+    height: 200px; 
+    overflow-y: auto; 
 }
 
 .stat {
@@ -715,13 +704,13 @@ h1 {
 .stat-name {
     width: 120px;
     font-weight: bold;
-    color: #333; /* Texto oscuro */
+    color: #333; 
 }
 
 .stat-bar {
     height: 30px;
     border-radius: 5px;
-    background-color: #6f95db; /* Fondo de la barra */
+    background-color: #6f95db;
     width: 100%;
     position: relative;
 }
@@ -729,27 +718,28 @@ h1 {
 .stat-fill {
     height: 100%;
     border-radius: 5px;
-    transition: width 0.8s ease-in-out; /* Animación suave */
+    transition: width 0.8s ease-in-out; 
 }
 
-/* Colores para las estadísticas */
-.stat-fill.hp { background-color: #ff5959; } /* Rojo para HP */
-.stat-fill.attack { background-color: #f5ac78; } /* Naranja para Attack */
-.stat-fill.defense { background-color: #fae078; } /* Amarillo para Defense */
-.stat-fill.special-attack { background-color: #9db7f5; } /* Azul claro para Special Attack */
-.stat-fill.special-defense { background-color: #a7db8d; } /* Verde claro para Special Defense */
-.stat-fill.speed { background-color: #fa92b2; } /* Rosa para Speed */
 
-/* Ajustar altura para ocupar el modal-right */
+.stat-fill.hp { background-color: #ff5959; /
+.stat-fill.attack { background-color: #f5ac78; } 
+.stat-fill.defense { background-color: #fae078; } 
+.stat-fill.special-attack { background-color: #9db7f5; } 
+.stat-fill.special-defense { background-color: #a7db8d; } 
+.stat-fill.speed { background-color: #fa92b2; } 
+
+
 .stat-bar {
-    height: 100%; /* Ocupa toda la altura disponible */
+    height: 100%; 
     display: flex;
     align-items: center;
     position: relative;
 }
 
 .stat-fill {
-    height: 100%; /* Ajustar altura al contenedor */
-    width: var(--progress-width); /* Usar variable para el ancho dinámico */
-    transition: width 0.8s ease-in-out; /* Animación suave */
+    height: 100%; 
+    width: var(--progress-width); 
+    transition: width 0.8s ease-in-out; 
+}
 }

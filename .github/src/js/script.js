@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const pokemonList = document.getElementById('pokemon-list');
-    const pokeCount = 1025; // Número de Pokémon a cargar
+    const pokeCount = 1030;
     const modal = document.getElementById('pokemon-modal');
     const closeModal = document.querySelector('.close');
     const filterButtons = document.querySelectorAll('.pokemon-type-btn');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.getElementById('Search-button');
     modal.style.display = 'none'; // Ocultar modal al iniciar, solo se muestra cuando se abre >:D
 
-    // Debounce function to limit the rate of search execution
+    
     const debounce = (func, delay) => {
         let debounceTimer;
         return function() {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const speciesData = await speciesResponse.json();
 
             populateModal(data, speciesData);
-            modal.style.display = 'flex'; // Mostrar modal solo cuando hay datos
+            modal.style.display = 'flex'; // Mostrar modal solo cuando hay datos                                                           // Profe subanos la nota porfa que pereza Documentar
         } catch (error) {
             console.error('Error fetching Pokémon data:', error);
         }
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return statNames[stat] || stat;
     };
 
-    // Cerrar modal
+   
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
     });
@@ -170,14 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Cerrar modal con la tecla Escape
-    document.addEventListener('keydown', (event) => {
+    
+    document.addEventListener('keydown', (event) => { //con el Esc
         if (event.key === 'Escape') {
             modal.style.display = 'none';
         }
     });
 
-    // Filtrado por tipo
+    // Filtrado por tipo (botones lindos con reflejos)
     filterButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const type = event.target.id;
@@ -198,14 +198,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Búsqueda por nombre o número
-    // Búsqueda por nombre o número
 searchInput.addEventListener('input', debounce(() => {
-    const searchTerm = searchInput.value.trim().toLowerCase(); // Eliminar espacios y convertir a minúsculas
+    const searchTerm = searchInput.value.trim().toLowerCase(); 
     filterPokemonByNameOrId(searchTerm);
 }, 300));
 
 searchButton.addEventListener('click', () => {
-    const searchTerm = searchInput.value.trim().toLowerCase(); // Eliminar espacios y convertir a minúsculas
+    const searchTerm = searchInput.value.trim().toLowerCase(); 
     filterPokemonByNameOrId(searchTerm);
 });
 
@@ -284,7 +283,7 @@ const populateModal = (data, speciesData) => {
         const statValue = stat.base_stat;
 
         // Crear la barra de progreso
-        const statDiv = document.createElement('div');
+        const statDiv = document.createElement('div');                    //mero teso mi compañero pongale punto positivo
         statDiv.classList.add('stat');
 
         statDiv.innerHTML = `
